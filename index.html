@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighting Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .top-hud {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .p1-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            border-left: 4px solid #fff;
+            border-top: 4px solid #fff;
+            border-bottom: 4px solid #fff;
+        }
+
+        .p1-health {
+            background-color: #818CF8;
+            position: relative;
+            height: 30px;
+            width: 100%;
+        }
+
+        .p1-health-back {
+            position: absolute;
+            background-color: #881337;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .p1-name,
+        .p1-name:hover {
+            position: absolute;
+            top: 40px;
+            left: 5px;
+            color: #fff;
+            font-weight: bold;
+            cursor: default;
+            text-shadow: -2px 2px 0 #000, 
+                2px 2px 0 #000, 
+                2px -2px 0 #000;
+                -2px -2px 0 #000;
+        }
+
+        .p2-container {
+            position: relative;
+            /*height: 30px;*/
+            width: 100%;
+            border-right: 4px solid #fff;
+            border-top: 4px solid #fff;
+            border-bottom: 4px solid #fff;
+        }
+
+        .p2-health {
+            background-color: #818CF8;
+            position: relative;
+            height: 30px;
+            width: 100%;
+        }
+
+        .p2-health-back {
+            position: absolute;
+            background-color: #881337;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .p2-name,
+        .p2-name:hover {
+            position: absolute;
+            right: 5px;
+            top: 40px;
+            color: #fff;
+            font-weight: bold;
+            cursor: default;
+            text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000;
+            -2px -2px 0 #000;
+        }
+
+        .timer,
+        .timer:hover {
+            background-color: black;
+            width: 80px;
+            height: 50px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .game-result,
+        .game-result:hover {
+            position: absolute;
+            color: #fff;
+            font-size: 5rem;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: #717171;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            display: none;
+            cursor: default;
+            text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000;
+            -2px -2px 0 #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-hud">
+            <!--Player Health-->
+            <div class="p1-container">
+                <div class="p1-health-back"></div>
+                <div class="p1-health" id="playerHealth"></div>
+                <div class="p1-name">Mack</div>
+            </div>
+
+            <!--Timer-->
+            <div class="timer" id="timer">
+                10
+            </div>
+            <!--Enemy Health-->
+
+            <div class="p2-container">
+                <div class="p2-health-back"></div>
+                <div class="p2-health" id="enemyHealth"></div>
+                <div class="p2-name">Kenji</div>
+            </div>
+        </div>
+        <div class="game-result" id="gameResult">T I E</div>
+        <canvas></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/classes.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
